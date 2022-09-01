@@ -1,5 +1,13 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHashHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
+import Activity from '../views/Activity.vue'
+import ContactUs from '../views/ContactUs.vue'
+import GroupMember from '../views/GroupMember.vue'
+import JoinUs from '../views/JoinUs.vue'
+import News from '../views/News.vue'
+import Result from '../views/Result.vue'
+import SearchDirection from '../views/SearchDirection.vue'
+
 
 const routes = [
   {
@@ -8,17 +16,53 @@ const routes = [
     component: HomeView
   },
   {
-    path: '/about',
-    name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
-  }
+    path: "/:pathMatch(.*)",
+    redirect: "/home"
+  },
+  {
+    path: '/home',
+    name: 'home',
+    component: HomeView
+  },
+  {
+    path: '/activity',
+    name: 'activity',
+    component: Activity
+  },
+  {
+    path: '/contact',
+    name: 'contact',
+    component: ContactUs
+  },
+  {
+    path: '/group',
+    name: 'group',
+    component: GroupMember
+  },
+  {
+    path: '/join',
+    name: 'join',
+    component: JoinUs
+  },
+  {
+    path: '/news',
+    name: 'news',
+    component: News
+  },
+  {
+    path: '/result',
+    name: 'result',
+    component: Result
+  },
+  {
+    path: '/search',
+    name: 'search',
+    component: SearchDirection
+  },
 ]
 
 const router = createRouter({
-  history: createWebHistory(process.env.BASE_URL),
+  history: createWebHashHistory(process.env.BASE_URL),
   routes
 })
 
