@@ -11,28 +11,28 @@
         <li
           :class="currentPath == '/' || currentPath == '/home' ? 'active' : ''"
         >
-          <a href="/#/home">首页</a>
+          <a @click="goTo('home')">首页</a>
         </li>
         <li :class="currentPath == '/search' ? 'active' : ''">
-          <a href="/#/search">研究方向</a>
+          <a @click="goTo('search')">研究方向</a>
         </li>
         <li :class="currentPath == '/news' ? 'active' : ''">
-          <a href="/#/news">课题组新闻</a>
+          <a @click="goTo('news')">课题组新闻</a>
         </li>
         <li :class="currentPath == '/result' ? 'active' : ''">
-          <a href="/#/result">成果及论文</a>
+          <a @click="goTo('result')">成果及论文</a>
         </li>
         <li :class="currentPath == '/group' ? 'active' : ''">
-          <a href="/#/group">组员介绍</a>
+          <a @click="goTo('group')">组员介绍</a>
         </li>
         <li :class="currentPath == '/activity' ? 'active' : ''">
-          <a href="/#/activity">组内活动</a>
+          <a @click="goTo('activity')">组内活动</a>
         </li>
         <li :class="currentPath == '/join' ? 'active' : ''">
-          <a href="/#/join">加入我们</a>
+          <a @click="goTo('join')">加入我们</a>
         </li>
         <li :class="currentPath == '/contact' ? 'active' : ''">
-          <a href="/#/contact">联系我们</a>
+          <a @click="goTo('contact')">联系我们</a>
         </li>
       </ul>
     </div>
@@ -41,12 +41,16 @@
 
 <script setup>
 import { computed } from "vue";
-import { useRoute } from "vue-router";
+import { useRoute, useRouter } from "vue-router";
 const route = useRoute();
+const router = useRouter();
 console.log(route.path);
 let currentPath = computed(() => {
   return route.path;
 });
+const goTo = (value) => {
+  router.push(`/${value}`);
+};
 </script>
 
 <style>

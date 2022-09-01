@@ -24,7 +24,7 @@
     <div class="content2">
       <div class="mainContent">
         <h1>研究方向</h1>
-        <a href="/#/search">更多 &gt;</a>
+        <a @click="goTo('search')">更多 &gt;</a>
         <div class="test">
           <hr />
           <br />
@@ -38,7 +38,7 @@
     <div class="content">
       <div class="mainContent">
         <h1>课题组新闻</h1>
-        <a href="/#/news">更多 &gt;</a>
+        <a @click="goTo('news')">更多 &gt;</a>
         <div class="test">
           <hr />
           <br />
@@ -52,7 +52,7 @@
     <div class="content4">
       <div class="mainContent">
         <h1>组内活动</h1>
-        <a href="/#/activity">更多 &gt;</a>
+        <a @click="goTo('activity')">更多 &gt;</a>
         <div class="test">
           <hr />
           <div class="testContent">
@@ -82,6 +82,13 @@
 
 <script setup>
 import Footer from "@/components/Footer.vue";
+import { useRoute, useRouter } from "vue-router";
+const route = useRoute();
+const router = useRouter();
+
+const goTo = (value) => {
+  router.push(`/${value}`);
+};
 </script>
 <style>
 .home img {
